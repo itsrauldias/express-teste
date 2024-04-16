@@ -1,19 +1,13 @@
-FROM node:20 AS base
+FROM alpine:latest
 
-FROM base AS dependencies
+RUN apk add --no-cache --update nodejs npm
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY package.json .
 
 RUN npm install
 
-FROM base AS build
-
-WORKDIR /usr/src/app
-
 COPY . .
 
-EXPOSE 80
-
-CMD [ "npm", "start" ]
+CMD ["npm", "run", "server"]
