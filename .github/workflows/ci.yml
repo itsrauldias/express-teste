@@ -35,12 +35,12 @@ jobs:
         docker tag itsrauldias/express-teste:${{ steps.generate_sha.outputs.sha }} itsrauldias/express-teste:latest
         docker push itsrauldias/express-teste:latest
 
-    - name: Update image tag
-      uses: fjogeleit/yaml-update-action@main
-      with:
-        branch: main
-        valueFile: 'deploy/values.yaml'
-        propertyPath: 'image.tag'
-        value: "${{ steps.generate_sha.outputs.sha }}"
-        commitChange: true
-        message: "new: Updated tag in values helm"
+    # - name: Update image tag
+    #   uses: fjogeleit/yaml-update-action@main
+    #   with:
+    #     branch: main
+    #     valueFile: 'deploy/values.yaml'
+    #     propertyPath: 'image.tag'
+    #     value: "${{ steps.generate_sha.outputs.sha }}"
+    #     commitChange: true
+    #     message: "new: Updated tag in values helm"
