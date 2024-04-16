@@ -7,14 +7,14 @@ on:
 
 jobs:
   build-and-push:
-    name: 'Build and Push'
+    name: 'Build e Push'
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Generate sha
+    - name: Gerar sha
       id: generate_sha
       run: |
         SHA=$(echo $GITHUB_SHA | head -c7)
@@ -23,7 +23,7 @@ jobs:
     - name: Construir imagem docker
       run: docker build -t itsrauldias/express-teste:${{ steps.generate_sha.outputs.sha }} .
 
-    - name: Log into the container registry
+    - name: Logar no container registry
       uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
