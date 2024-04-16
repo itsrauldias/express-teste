@@ -8,12 +8,6 @@ COPY package.json package-lock.json ./
 
 RUN npm install
 
-FROM base AS build
-
-WORKDIR /usr/src/app
-
-COPY . .
-
 EXPOSE 80
 
 CMD [ "npm", "start" ]
