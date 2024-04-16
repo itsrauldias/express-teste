@@ -21,7 +21,7 @@ jobs:
         echo "sha=$SHA" >> $GITHUB_OUTPUT
 
     - name: Construir imagem docker
-      run: docker build -t itsrauldias/expressTeste:${{ steps.generate_sha.outputs.sha }} .
+      run: docker build -t itsrauldias/express-teste:${{ steps.generate_sha.outputs.sha }} .
 
     - name: Log into the container registry
       uses: docker/login-action@v3
@@ -31,9 +31,9 @@ jobs:
 
     - name: Push image
       run: |
-        docker push itsrauldias/expressTeste:${{ steps.generate_sha.outputs.sha }}
-        docker tag itsrauldias/expressTeste:${{ steps.generate_sha.outputs.sha }} itsrauldias/expressTeste:latest
-        docker push itsrauldias/expressTeste:latest
+        docker push itsrauldias/express-teste:${{ steps.generate_sha.outputs.sha }}
+        docker tag itsrauldias/express-teste:${{ steps.generate_sha.outputs.sha }} itsrauldias/express-teste:latest
+        docker push itsrauldias/express-teste:latest
 
     - name: Update image tag
       uses: fjogeleit/yaml-update-action@main
